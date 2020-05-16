@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-au-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href='/static/node_modules/@fullcalendar/core/main.css'>
+    <link rel="stylesheet" href='/static/node_modules/@fullcalendar/daygrid/main.css'>
+    <link rel="stylesheet" href='/static/node_modules/@fullcalendar/timegrid/main.css'>
+
+    <title>nav.igate</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href={{ url_for('home') }}><span class="fa fa-home fa-lg"></span>
+                            Home</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-calendar"></span>
+                            map</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1>Your map:</h1>
+	<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <div class="container" id="calendar">
+    </div>
+
+    <script src="/static/node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/static/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src='/static/node_modules/@fullcalendar/core/main.js'></script>
+    <script src='/static/node_modules/@fullcalendar/daygrid/main.js'></script>
+    <script src='/static/node_modules/@fullcalendar/timegrid/main.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: [ 'timeGrid', 'dayGrid' ],
+                defaultView: 'timeGridWeek',
+                events: [
+                    {
+                        title: 'Walmart Shopping',
+                        start: 2020-05-16
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
